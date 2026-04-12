@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kate deLunière</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fffdf9;
+      --text: #4e4a46;
+      --muted: #8b847d;
+      --accent-soft: #eef4ea;
+      --accent-warm: #f4ede2;
+      --card: rgba(255, 255, 255, 0.78);
+      --border: rgba(78, 74, 70, 0.08);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0;
+      animation: fadeInPage 0.5s ease;
+    }
+
+    .navbar {
+      background: rgba(255, 253, 249, 0.92);
+      backdrop-filter: blur(8px);
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: var(--text) !important;
+    }
+
+    .navbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.03em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      padding-top: 4px;
+    }
+
+    .logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      font-style: italic;
+      color: rgba(78, 74, 70, 0.6);
+      margin-top: 3px;
+      opacity: 0.7;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      margin-left: 0.75rem;
+    }
+
+    .hero-books {
+      min-height: 64vh;
+      display: flex;
+      align-items: center;
+      padding-top: 9rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-text {
+      animation: fadeUp 1.2s ease;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      font-weight: 500;
+      line-height: 1.08;
+      margin-bottom: 1rem;
+      max-width: 760px;
+    }
+
+    .hero-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+      max-width: 700px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-subtext {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .page-emoji {
+      display: inline-block;
+      margin-left: 0.18em;
+      font-size: 0.7em;
+      opacity: 0.45;
+      transform: translateY(-2px);
+    }
+
+    .btn-garden {
+      border: 1px solid rgba(78, 74, 70, 0.18);
+      color: var(--text);
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .btn-garden:hover {
+      background: #f3efe9;
+      border-color: rgba(78, 74, 70, 0.3);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .books-section {
+      padding: 1rem 0 5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-text {
+      max-width: 650px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .book-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.82), rgba(248,245,240,0.88));
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 2.4rem;
+      box-shadow: 0 14px 30px rgba(93, 79, 67, 0.04);
+    }
+
+    .book-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .book-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      line-height: 1.12;
+      margin-bottom: 1rem;
+    }
+
+    .book-description {
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 620px;
+      margin-bottom: 1.4rem;
+    }
+
+    .book-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 1.8rem;
+    }
+
+    .book-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .hum-section {
+      padding: 2rem 0 5rem;
+    }
+
+    .hum-card {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2.2rem 1.6rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(78, 74, 70, 0.06);
+    }
+
+    .hum-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .hum-subtext {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 0.98rem;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 3rem 0 4rem;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: underline;
+      opacity: 0.7;
+    }
+
+    footer a:hover {
+      opacity: 1;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInPage {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .book-card {
+        padding: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <span class="logo-main">Kate deLunière</span>
+        <span class="logo-subtitle">words breathe here</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-books">
+    <div class="container">
+      <div class="hero-text">
+        <h1 class="hero-title">Books <span class="page-emoji">🐞</span></h1>
+        <p class="hero-line">Wonder, and softly unfolding worlds.</p>
+        <p class="hero-subtext">
+          This is not a storefront. It’s a quiet corner for the books that have already found form,
+          and for the ones still arriving with a little mystery, warmth, and soft laughter.
+        </p>
+        <a href="#featured-book" class="btn-garden">See what’s here</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Book -->
+  <section id="featured-book" class="books-section">
+    <div class="container">
+      <h2 class="section-title">On the shelf</h2>
+      <p class="section-text">
+        A small collection, for now. But real, and made with care.
+      </p>
+
+      <div class="book-card">
+        <div class="book-label">Available now</div>
+        <h3 class="book-title">The Art of Fabulous Living: Flamingo’s Guide to Chaos and Perfection</h3>
+        <p class="book-description">
+          A playful, stylish little companion for anyone trying to move through chaos without losing their feathers.
+          It leans into humor, mischief, and the soft absurdity of trying to live beautifully in a world that rarely behaves.
+        </p>
+        <p class="book-note">
+          Part guide, part wink, part velvet-flamingo energy.
+        </p>
+
+        <div class="book-links">
+          <a class="btn-garden" href="https://www.amazon.com/dp/B0FPBW4Q7S" target="_blank" rel="noopener noreferrer">Find the book</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Something Coming -->
+  <section class="hum-section">
+    <div class="container">
+      <div class="hum-card">
+        <p class="hum-line">Something new is humming through the pages.</p>
+        <p class="hum-subtext">
+          Not everything needs to be named right away. Some stories arrive quietly,
+          with tea still warm and the ending nowhere in sight.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="container text-center">
+    <div class="footer-note mb-2">
+      You can linger here a little.
+    </div>
+
+    <div class="footer-note" style="font-size: 0.85rem; opacity: 0.7;">
+      More worlds are quietly unfolding in 
+      <a href="https://betweenwildflowers.com">Between Wildflowers</a>.<br><br>
+
+      © 2026 Kate deLunière<br>
+      Written with wonder and a little edge
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
